@@ -1,0 +1,22 @@
+{
+	"settings": {
+		"delve_enable": true,
+		"godebug_executables": {
+			"debug": {
+				"mode": "debug"
+			},
+			"test": {
+				"mode": "test"
+			}
+		},
+		"golang": {
+			"PATH": "/home/kenzanin/.go/current/bin",
+			"GOPATH": "/home/kenzanin/go"
+		}
+	},
+	"folders": [
+		{
+			"path": "."
+		}
+	]
+}

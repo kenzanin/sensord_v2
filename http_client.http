@@ -1,0 +1,11 @@
+GET http://localhost:8080/read/PH?read=true
+GET http://localhost:8080/read/PH?read=false
+
+GET http://localhost:8080/read/COD?read=true
+GET http://localhost:8080/read/COD?read=false
+read/
+GET http://localhost:8080/read/TSS?read=true
+GET http://localhost:8080/read/TSS?read=false
+read/
+GET http://localhost:8080/read/NH3N?read=true
+GET http://localhost:8080/read/NH3N?read=false

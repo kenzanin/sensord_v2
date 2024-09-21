@@ -1,0 +1,1454 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"va",
+				"Value"
+			],
+			[
+				"a",
+				"Address)"
+			],
+			[
+				"rea",
+				"readReg"
+			],
+			[
+				"ti",
+				"TimeStamp"
+			],
+			[
+				"me",
+				"Metrics"
+			],
+			[
+				"uint",
+				"uint8"
+			],
+			[
+				"se",
+				"Seq"
+			],
+			[
+				"time",
+				"TimeStamp"
+			],
+			[
+				"ma",
+				"matriks"
+			],
+			[
+				"stri",
+				"string_literals"
+			],
+			[
+				"ios",
+				"iostream>"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"modbus_get_floa",
+				"modbus_get_float_abcd"
+			],
+			[
+				"modbus_get_float_",
+				"modbus_get_float_cdab"
+			],
+			[
+				"pa",
+				"path"
+			],
+			[
+				"modbus_write",
+				"modbus_write_registers"
+			],
+			[
+				"modbus_set_time",
+				"modbus_set_response_timeout"
+			],
+			[
+				"modbus_set",
+				"modbus_set_debug"
+			],
+			[
+				"s",
+				"size"
+			],
+			[
+				"modbus_wr",
+				"modbus_write_and_read_registers"
+			],
+			[
+				"set",
+				"set_header"
+			],
+			[
+				"modbus_set_float_",
+				"modbus_set_float_dcba"
+			],
+			[
+				"modbus_set_",
+				"modbus_set_float_cdab"
+			],
+			[
+				"add",
+				"addr"
+			],
+			[
+				"modbus_de",
+				"modbus_set_debug"
+			],
+			[
+				"serv",
+				"serviceName"
+			],
+			[
+				"addse",
+				"addServicePh"
+			],
+			[
+				"mili",
+				"milliseconds"
+			],
+			[
+				"sle",
+				"sleep_for"
+			],
+			[
+				"signa",
+				"signal_handler"
+			],
+			[
+				"sig",
+				"signal"
+			],
+			[
+				"compile",
+				"add_compile_definitions"
+			],
+			[
+				"conf",
+				"config_file"
+			],
+			[
+				"string",
+				"string_literals"
+			],
+			[
+				"using",
+				"using namespace"
+			],
+			[
+				"con",
+				"config.json"
+			],
+			[
+				"targ",
+				"target_compile_definitions"
+			],
+			[
+				"arg",
+				"argc"
+			],
+			[
+				"mi",
+				"milliseconds"
+			],
+			[
+				"system",
+				"system_clock"
+			],
+			[
+				"dura",
+				"duration_cast"
+			],
+			[
+				"modbus",
+				"modbus_free"
+			],
+			[
+				"err",
+				"errno"
+			],
+			[
+				"modbu",
+				"modbus_strerror"
+			],
+			[
+				"func",
+				"funcName"
+			],
+			[
+				"cons",
+				"constexpr"
+			],
+			[
+				"name",
+				"namespace"
+			],
+			[
+				"fun",
+				"funcName"
+			],
+			[
+				"const",
+				"constexpr"
+			],
+			[
+				"string_",
+				"string_view"
+			],
+			[
+				"null",
+				"nullopt"
+			],
+			[
+				"wri",
+				"writeOffset"
+			],
+			[
+				"adds",
+				"addServiceTss"
+			],
+			[
+				"addSe",
+				"addServicePh"
+			],
+			[
+				"ser",
+				"server.hpp>"
+			],
+			[
+				"tm",
+				"tmp"
+			],
+			[
+				"strTo",
+				"strtof"
+			],
+			[
+				"get",
+				"get_param_value"
+			],
+			[
+				"o",
+				"writeOffset"
+			],
+			[
+				"ph",
+				"phProbe"
+			],
+			[
+				"re",
+				"readValue"
+			],
+			[
+				"read",
+				"readTemp"
+			],
+			[
+				"readT",
+				"readTemp"
+			],
+			[
+				"f",
+				"flowProbe"
+			],
+			[
+				"pro",
+				"probes.hpp>"
+			],
+			[
+				"lock",
+				"lock_guard"
+			],
+			[
+				"pr",
+				"Probes"
+			],
+			[
+				"getc",
+				"getchar"
+			],
+			[
+				"sy",
+				"system"
+			],
+			[
+				"getC",
+				"getchar"
+			],
+			[
+				"st",
+				"Start"
+			],
+			[
+				"cod",
+				"codProbe"
+			],
+			[
+				"server",
+				"serverLog"
+			],
+			[
+				"stdout",
+				"stdout_logger_st"
+			],
+			[
+				"bin",
+				"bind_to_port"
+			],
+			[
+				"lis",
+				"listen_after_bind"
+			],
+			[
+				"uniqu",
+				"unique_ptr"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "sensord_v2.sublime-project",
+			"settings":
+			{
+				"buffer_size": 291,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					3,
+					3,
+					"left_delete",
+					null,
+					"AwAAANAAAAAAAAAA0AAAAAAAAAABAAAAb88AAAAAAAAAzwAAAAAAAAABAAAAZ84AAAAAAAAAzgAAAAAAAAABAAAALw",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAADRAAAAAAAAANEAAAAAAAAAAAAAAAAA8L8"
+				]
+			]
+		},
+		{
+			"file": "main.go",
+			"settings":
+			{
+				"buffer_size": 13,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					2,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AQAAAA0AAAAAAAAADgAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAADQAAAAAAAAANAAAAAAAAAAAAAAAAAAAA"
+				],
+				[
+					4,
+					1,
+					"gotools_format",
+					null,
+					"AQAAAAAAAAAAAAAADQAAAAAAAAAOAAAAcGFja2FnZSBtYWluCgo",
+					"AQAAAAAAAAABAAAADgAAAAAAAAAOAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					13,
+					1,
+					"gotools_format",
+					null,
+					"AQAAAAAAAAAAAAAADQAAAAAAAAANAAAAcGFja2FnZSBtYWluCg",
+					"AQAAAAAAAAABAAAADQAAAAAAAAANAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					22,
+					1,
+					"gotools_format",
+					null,
+					"AQAAAAAAAAAAAAAADQAAAAAAAAANAAAAcGFja2FnZSBtYWluCg",
+					"AQAAAAAAAAABAAAADQAAAAAAAAANAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					31,
+					1,
+					"gotools_format",
+					null,
+					"AQAAAAAAAAAAAAAADQAAAAAAAAANAAAAcGFja2FnZSBtYWluCg",
+					"AQAAAAAAAAABAAAADQAAAAAAAAANAAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Debug",
+					""
+				],
+				[
+					"Debug",
+					"config"
+				],
+				[
+					"Debug",
+					"misc"
+				],
+				[
+					"Debug",
+					"probes"
+				],
+				[
+					"Debug",
+					"sensord"
+				],
+				[
+					"Debug",
+					"Run: sensord"
+				],
+				[
+					"Debug",
+					"Run under GDB: sensord"
+				],
+				[
+					"Debug",
+					"server"
+				],
+				[
+					"Debug",
+					"ctest"
+				]
+			],
+			[
+				"Debug",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Debug",
+					""
+				],
+				[
+					"Debug",
+					"config"
+				],
+				[
+					"Debug",
+					"misc"
+				],
+				[
+					"Debug",
+					"probes"
+				],
+				[
+					"Debug",
+					"sensord"
+				],
+				[
+					"Debug",
+					"Run: sensord"
+				],
+				[
+					"Debug",
+					"Run under GDB: sensord"
+				],
+				[
+					"Debug",
+					"server"
+				],
+				[
+					"Debug",
+					"ctest"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Debug",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Debug",
+					""
+				],
+				[
+					"Debug",
+					"config"
+				],
+				[
+					"Debug",
+					"misc"
+				],
+				[
+					"Debug",
+					"probes"
+				],
+				[
+					"Debug",
+					"sensord"
+				],
+				[
+					"Debug",
+					"Run: sensord"
+				],
+				[
+					"Debug",
+					"Run under GDB: sensord"
+				],
+				[
+					"Debug",
+					"server"
+				],
+				[
+					"Debug",
+					"ctest"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/C++11/C++11.sublime-build",
+					""
+				],
+				[
+					"Packages/C++11/C++11.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Debug",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Debug",
+					""
+				],
+				[
+					"Debug",
+					"config"
+				],
+				[
+					"Debug",
+					"misc"
+				],
+				[
+					"Debug",
+					"probes"
+				],
+				[
+					"Debug",
+					"sensord"
+				],
+				[
+					"Debug",
+					"Run: sensord"
+				],
+				[
+					"Debug",
+					"Run under GDB: sensord"
+				],
+				[
+					"Debug",
+					"server"
+				],
+				[
+					"Debug",
+					"ctest"
+				],
+				[
+					"Packages/C++11/C++11.sublime-build",
+					""
+				],
+				[
+					"Packages/C++11/C++11.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Debug",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Default",
+					""
+				],
+				[
+					"Default",
+					"config"
+				],
+				[
+					"Default",
+					"misc"
+				],
+				[
+					"Default",
+					"probes"
+				],
+				[
+					"Default",
+					"sensord"
+				],
+				[
+					"Default",
+					"Run: sensord"
+				],
+				[
+					"Default",
+					"Run under GDB: sensord"
+				],
+				[
+					"Default",
+					"server"
+				],
+				[
+					"Default",
+					"ctest"
+				]
+			],
+			[
+				"Default",
+				"Run: sensord"
+			]
+		],
+		[
+			[
+				[
+					"Default",
+					""
+				],
+				[
+					"Default",
+					"config"
+				],
+				[
+					"Default",
+					"misc"
+				],
+				[
+					"Default",
+					"probes"
+				],
+				[
+					"Default",
+					"sensord"
+				],
+				[
+					"Default",
+					"Run: sensord"
+				],
+				[
+					"Default",
+					"Run under GDB: sensord"
+				],
+				[
+					"Default",
+					"server"
+				],
+				[
+					"Default",
+					"ctest"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Default",
+				"Run: sensord"
+			]
+		],
+		[
+			[
+				[
+					"Default",
+					""
+				],
+				[
+					"Default",
+					"config"
+				],
+				[
+					"Default",
+					"misc"
+				],
+				[
+					"Default",
+					"probes"
+				],
+				[
+					"Default",
+					"sensord"
+				],
+				[
+					"Default",
+					"Run: sensord"
+				],
+				[
+					"Default",
+					"Run under GDB: sensord"
+				],
+				[
+					"Default",
+					"server"
+				],
+				[
+					"Default",
+					"ctest"
+				],
+				[
+					"Packages/C++11/C++11.sublime-build",
+					""
+				],
+				[
+					"Packages/C++11/C++11.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Default",
+				"Run: sensord"
+			]
+		],
+		[
+			[
+				[
+					"Default",
+					""
+				],
+				[
+					"Default",
+					"config"
+				],
+				[
+					"Default",
+					"misc"
+				],
+				[
+					"Default",
+					"probes"
+				],
+				[
+					"Default",
+					"sensord"
+				],
+				[
+					"Default",
+					"Run: sensord"
+				],
+				[
+					"Default",
+					"Run under GDB: sensord"
+				],
+				[
+					"Default",
+					"server"
+				],
+				[
+					"Default",
+					"ctest"
+				],
+				[
+					"Packages/ShellScript/ShellScript.sublime-build",
+					""
+				]
+			],
+			[
+				"Default",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					""
+				],
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					"Test"
+				],
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					"Install"
+				],
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					"Cross-Compile (Interactive)"
+				],
+				[
+					"Packages/Golang Build/Go.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Golang Build/Go.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"gode",
+				"GoDebug: Start debugging"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Upgrade All Packages"
+			],
+			[
+				"lsp",
+				"LSP: Restart Server"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"terminal",
+				"Go: Open Terminal"
+			],
+			[
+				"build",
+				"Build With: Go"
+			],
+			[
+				"restart",
+				"LSP: Restart Server"
+			],
+			[
+				"got",
+				"Go: Open Terminal"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"forma",
+				"CMake Format: Format Selection"
+			],
+			[
+				"Package Control: upda",
+				"Package Control: Upgrade All Packages"
+			],
+			[
+				"cmake",
+				"Set Syntax: CMake"
+			],
+			[
+				"format",
+				"Clang Format: Format Selection"
+			],
+			[
+				"lsp fo",
+				"LSP: Format File"
+			],
+			[
+				"json",
+				"Pretty JSON: Format JSON"
+			],
+			[
+				"git",
+				"Git: Gui"
+			],
+			[
+				"git co",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add All"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"gdb",
+				"SublimeGDB: Start Debugging"
+			],
+			[
+				"break",
+				"SublimeGDB: Open Breakpoint View"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"termi",
+				"Terminus: Toggle Panel"
+			],
+			[
+				"paka",
+				"Package Control: Install Package"
+			],
+			[
+				"cm",
+				"CMakeBuilder: Configure"
+			],
+			[
+				"c",
+				"CMakeBuilder: Configure"
+			],
+			[
+				"for",
+				"CMake Format: Format Selection"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"fo",
+				"LSP: Format File"
+			],
+			[
+				"",
+				"Autocomplete file name"
+			],
+			[
+				"f",
+				"LSP: Format File"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pak",
+				"Package Control: Install Package"
+			],
+			[
+				"run",
+				"LSP: Run Code Lens"
+			],
+			[
+				"pakage in",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"form",
+				"Clang Format: Format Selection"
+			],
+			[
+				"satisfy",
+				"Package Control: Satisfy Libraries"
+			],
+			[
+				"saty",
+				"Package Control: Satisfy Packages"
+			],
+			[
+				"clangd",
+				"Preferences: LSP-clangd Settings"
+			],
+			[
+				"clang",
+				"Preferences: LSP-clangd Settings"
+			],
+			[
+				"conf",
+				"CMakeBuilder: Configure"
+			],
+			[
+				"them",
+				"ayu: Activate theme"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 154.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/kenzanin/Documents/MDS/sparing-hmi/sensord_v2"
+	],
+	"file_history":
+	[
+		"/home/kenzanin/Documents/MDS/sparing-hmi/sensord_v2/sensord_v2.sublime-project",
+		"/home/kenzanin/.config/sublime-text/Packages/GoDebug/GoDebug.sublime-settings",
+		"/home/kenzanin/build/zeal.sh",
+		"/home/kenzanin/Documents/MDS/sparing-hmi/sensord/config.json",
+		"/home/kenzanin/build/zeal",
+		"/home/kenzanin/build/asdf-0.14.1/README.md",
+		"/home/kenzanin/build/asdf-0.14.1/help.txt",
+		"/home/kenzanin/tmp/kenzanin_io/config.toml",
+		"/home/kenzanin/tmp/kenzanin_io/config.yaml",
+		"/home/kenzanin/tmp/kenzanin_io/hugo.toml",
+		"/home/kenzanin/tmp/kenzanin_io/hugo.yaml",
+		"/home/kenzanin/tmp/docsy-example/README.md",
+		"/home/kenzanin/tmp/docsy-example/hugo.yaml",
+		"/home/kenzanin/tmp/docsy-example/content/en/docs/_index.md",
+		"/home/kenzanin/tmp/php/index.php",
+		"/home/kenzanin/Arduino/test02/coba.c",
+		"/home/kenzanin/Arduino/test02/coba.h",
+		"/home/kenzanin/Downloads/The Bounty (1984) [720p] x264 - Jalucian.srt",
+		"/home/kenzanin/exercism/zig/all-your-base/all_your_base.zig",
+		"/home/kenzanin/Downloads/htaccess",
+		"/home/kenzanin/Downloads/error_log",
+		"/home/kenzanin/Downloads/wp-config.php",
+		"/home/kenzanin/Downloads/wp-settings.php",
+		"/home/kenzanin/Downloads/htaccess-disable",
+		"/home/kenzanin/Downloads/index(1).php",
+		"/home/kenzanin/.config/gzdoom/gzdoom.ini",
+		"/home/kenzanin/.cache/.fr-4P4MS2/Readme.txt",
+		"/home/kenzanin/.config/zdoom/config.ini",
+		"/home/kenzanin/.cache/.fr-CCUPS2/Readme.txt",
+		"/home/kenzanin/.cache/.fr-7HPSS2/Readme.txt",
+		"/home/kenzanin/.cache/.fr-d0ei3o/Telegram123/Telegram123.ino",
+		"/home/kenzanin/.cache/.fr-b3T3VH/Telegram123/Telegram123.ino",
+		"/home/kenzanin/dwhelper/Watch Seeking Justice 2011 Online Free Full Movies on HD - GoMov.srt",
+		"/home/kenzanin/build/simulators/ioTSensorsMQTT-SpB/README.md",
+		"/home/kenzanin/build/sparkplugb-client/sproto/sparkplug_b.pb.go",
+		"/home/kenzanin/build/sparkplugb-client/main.go",
+		"/home/kenzanin/Downloads/Sphere (1998).srt",
+		"/home/kenzanin/Downloads/The.Final.Girls.2015.Bluray-[drakor.in].srt",
+		"/home/kenzanin/Documents/MDS/simSparkPlug/config/config.go",
+		"/home/kenzanin/Documents/MDS/simSparkPlug/simSparkPlug.go",
+		"/home/kenzanin/Documents/MDS/simSparkPlug/config.json",
+		"/home/kenzanin/Documents/MDS/simSparkPlug/mqtt/mqtt.go",
+		"/home/kenzanin/Downloads/Putahe – Watch Erotic Adult Movies 18+ Online Free.ts",
+		"/home/kenzanin/Downloads/Les Exploits Dun Jeune Don Juan - Exploits Of A Young Don Juan (.srt",
+		"/home/kenzanin/games/Diablo_2/MODS/place your Modfolders here.txt",
+		"/home/kenzanin/tmp/TS/coba01/main.ts",
+		"/home/kenzanin/Documents/MDS/simSparkPlug/modbus/modbus.go",
+		"/home/kenzanin/.cache/.fr-52E1R2/Key_Install.txt",
+		"/home/kenzanin/.cache/.fr-OR5IS2/Key_Install.txt",
+		"/home/kenzanin/.cache/.fr-UT72R2/Modbus Slave 7.3/ModbusSlaveSetup32Bit.exe",
+		"/home/kenzanin/opt/modbusSim/DEBUG.TXT",
+		"/home/kenzanin/opt/qModMaster/qModMaster.exe",
+		"/home/kenzanin/opt/modbusSim/ModRSsim2_8.21.2.8.exe",
+		"/home/kenzanin/.cache/.fr-U2BMS2/Key_Install.txt",
+		"/home/kenzanin/.cache/.fr-7EEER2/CD SI Smart Garden New/New blynk IoT Smartgarden/Smart_Garden_New_Blynk_IoT_ver2/Smart_Garden_New_Blynk_IoT_ver2.ino",
+		"/home/kenzanin/tmp/gcc/test02/main.cpp",
+		"/usr/include/c++/14/iostream",
+		"/usr/include/c++/14/ostream",
+		"/usr/include/c++/14/bits/requires_hosted.h",
+		"/home/kenzanin/.cache/.fr-4WFLR2/CD SI Smart Garden New/Program Arduino/Monitoring_Sensor_Smart_garden/Monitoring_Sensor_Smart_garden.ino",
+		"/home/kenzanin/.cache/.fr-AHLER2/CD SI Smart Garden New/Program Arduino/Smart_Garden_Blynk/Smart_Garden_Blynk.ino",
+		"/home/kenzanin/Downloads/Answer.txt",
+		"/home/kenzanin/.cache/.fr-0margn/blynk-library-master/library.properties",
+		"/home/kenzanin/Arduino/test02/Smart_Garden_Blynk.ino",
+		"/home/kenzanin/.cache/.fr-7KJNR2/CD SI Smart Garden New/Program Arduino/Smart_Garden_Blynk/Smart_Garden_Blynk.ino",
+		"/home/kenzanin/.cache/.fr-ouMbWJ/blynk-library-master/README.md",
+		"/home/kenzanin/dwhelper/18 The Forbidden Legend Sex And Chopsticks 2 2009 บทรกอมตะ 2 - ด.srt",
+		"/home/kenzanin/tmp/shell/test01/test.sh",
+		"/home/kenzanin/.cache/.fr-6PYKR2/CD SI Smart Garden New/Program Arduino/Monitoring_Sensor_Smart_garden/Monitoring_Sensor_Smart_garden.ino",
+		"/home/kenzanin/.cache/.fr-cO0C9b/ValdikSS-GoodbyeDPI-99c403c/README.md",
+		"/home/kenzanin/kattis/cpp/whichisgreater.cpp",
+		"/home/kenzanin/kattis/cpp/ants.cpp",
+		"/home/kenzanin/kattis/cpp/ameriskur.cpp",
+		"/home/kenzanin/kattis/cpp/alphabetspam.cpp",
+		"/home/kenzanin/kattis/cpp/almostunionfind.cpp",
+		"/home/kenzanin/kattis/cpp/almostperfect.cpp",
+		"/home/kenzanin/kattis/cpp/akcija.cpp",
+		"/media/kenzanin/FD13-LiveCD/games/flpybird/flpybird.com",
+		"/home/kenzanin/kattis/cpp/aaah.cpp",
+		"/home/kenzanin/Documents/MDS/sparing-hmi/tss_debug.txt",
+		"/home/kenzanin/Downloads/board espcam.txt",
+		"/home/kenzanin/Downloads/board_utama.ino",
+		"/home/kenzanin/Documents/MDS/sparing-hmi/ph_debug.txt",
+		"/home/kenzanin/Documents/MDS/sparing-hmi/sparing_ui/config.ini",
+		"/home/kenzanin/Downloads/board utama.txt",
+		"/home/kenzanin/tmp/arduino/iot/iot.ino",
+		"/home/kenzanin/media/ff8/Games/Final Fantasy VIII Remastered/hlm.ini",
+		"/home/kenzanin/.advance/advmame.rc",
+		"/home/kenzanin/.advance/advmess.xml",
+		"/home/kenzanin/.advance/advmenu.rc",
+		"/home/kenzanin/.advance/advmess.rc",
+		"/run/user/1000/gvfs/ftp:host=192.168.1.2,port=2121/Download/2024-05-29 15-39-16-CloudLog.txt",
+		"/home/kenzanin/Downloads/Dragons.on.the.Hill.2024.1080p.WEB-DL.DDP2.0.H264-AOC.en.srt",
+		"/home/kenzanin/Downloads/Telegram Desktop/iot.ino",
+		"/home/kenzanin/.wine/dosdevices/c:/Games/Counter-Strike/cstrike/server.cfg",
+		"/home/kenzanin/.wine/dosdevices/c:/Games/Counter-Strike/cstrike/game_init.cfg",
+		"/home/kenzanin/.wine/dosdevices/c:/Games/Counter-Strike/cstrike/GameServerConfig.vdf",
+		"/home/kenzanin/.wine/dosdevices/c:/Games/Counter-Strike/cstrike/config.cfg",
+		"/home/kenzanin/Downloads/Compiler Explorer C++ Editor #1 Code.cpp",
+		"/home/kenzanin/Downloads/enc.bin",
+		"/home/kenzanin/build/scummvm-shaders/generate-addon-pack.sh",
+		"/home/kenzanin/build/scummvm-shaders/README.md",
+		"/home/kenzanin/.wine/drive_c/Games/Counter-Strike/cstrike/addons/metamod/plugins.ini",
+		"/home/kenzanin/build/scummvm-shaders/upstream/Makefile",
+		"/home/kenzanin/Downloads/amxmodx-installer-1.8.2.exe",
+		"/home/kenzanin/.cache/.fr-1yIXMv/oled_128/oled.hpp",
+		"/home/kenzanin/.wine/drive_c/Games/Counter-Strike/cstrike/autobuy.txt",
+		"/home/kenzanin/.wine/drive_c/Games/Counter-Strike/cstrike/mapcycle.txt",
+		"/home/kenzanin/.cache/.fr-548S7O/oled_128/oled.cpp",
+		"/home/kenzanin/kattis/cpp/bela.cpp",
+		"/home/kenzanin/kattis/cpp/sibice.cpp",
+		"/home/kenzanin/kattis/cpp/moscowdream.cpp",
+		"/home/kenzanin/kattis/cpp/egypt.cpp",
+		"/home/kenzanin/kattis/cpp/thelastproblem.cpp",
+		"/home/kenzanin/kattis/cpp/babelfish.cpp",
+		"/home/kenzanin/kattis/cpp/cetvrta.cpp",
+		"/home/kenzanin/kattis/cpp/t_9_spelling.cpp",
+		"/home/kenzanin/kattis/cpp/leftbeehind.cpp",
+		"/home/kenzanin/.cache/.fr-6Lw7QM/Front Mission 2 (English)/FM2_Readme.txt",
+		"/home/kenzanin/games/CS_SERVER/cstrike/addons/podbot/podbot.cfg",
+		"/home/kenzanin/.wine/drive_c/Games/Counter-Strike/cstrike/config.cfg",
+		"/home/kenzanin/games/CS_SERVER/cstrike/addons/amxmodx/configs/maps.ini",
+		"/home/kenzanin/games/CS_SERVER/HLDS.bat",
+		"/home/kenzanin/.wine/drive_c/Games/Counter-Strike/cstrike/game.cfg",
+		"/home/kenzanin/opt/hlds_build_7882/hlds_run",
+		"/home/kenzanin/games/CS_SERVER/cstrike/addons/podbot/versionhistory.txt",
+		"/home/kenzanin/.wine/drive_c/Games/Counter-Strike/cstrike/user.scr",
+		"/home/kenzanin/.wine/drive_c/Games/Counter-Strike/cstrike/settings.scr"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 134.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "sensord_v2.sublime-project",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 291,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								206,
+								206
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"selector": "- comment - punctuation.separator - punctuation.definition.string.end - constant.character.escape - invalid.illegal - punctuation.section.mapping - punctuation.section.sequence",
+									"server": "LSP-json"
+								}
+							],
+							"lsp_active": true,
+							"lsp_uri": "file:///home/kenzanin/Documents/MDS/sparing-hmi/sensord_v2/sensord_v2.sublime-project",
+							"show_definitions": false,
+							"syntax": "Packages/JSON/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "main.go",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13,
+								13
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": ".",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "gopls"
+								}
+							],
+							"lsp_active": true,
+							"lsp_uri": "file:///home/kenzanin/Documents/MDS/sparing-hmi/sensord_v2/main.go",
+							"show_definitions": false,
+							"syntax": "Packages/Go/Go.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 52.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.LSP Log Panel":
+	{
+		"height": 132.0
+	},
+	"output.Terminus":
+	{
+		"height": 138.0
+	},
+	"output.diagnostics":
+	{
+		"height": 132.0
+	},
+	"output.exec":
+	{
+		"height": 161.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 126.0
+	},
+	"output.golang_build":
+	{
+		"height": 223.0
+	},
+	"output.gotools_syntax_errors":
+	{
+		"height": 132.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.sensord":
+	{
+		"height": 191.0
+	},
+	"pinned_build_system": "",
+	"project": "sensord_v2.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 242.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

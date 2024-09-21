@@ -1,0 +1,50 @@
+LOOP_DELAY = 1000
+
+[DB]
+Db_Url = 'postgres://kenzanin:123@localhost:5432/sparingdb'
+
+[MODBUS]
+PORT = '/dev/tnt1'
+BAUD = 9600
+DATABITS = 8
+PARITY = 'N'
+TIMEOUT = 250
+
+[PH]
+NAME = 'PH'
+SLAVEID = 1
+VALUE_REG = 0
+TEMP_REG = 2
+KAB_REG = 0
+
+[COD]
+NAME = 'COD'
+SLAVEID = 2
+VALUE_REG = 0
+TEMP_REG = 0
+KAB_REG = 0
+
+[NH3N]
+NAME = 'NH3N'
+SLAVEID = 3
+VALUE_REG = 0
+TEMP_REG = 0
+KAB_REG = 0
+
+[TSS]
+NAME = 'TSS'
+SLAVEID = 4
+VALUE_REG = 0
+TEMP_REG = 2
+KAB_REG = 0
+
+[FLOW]
+NAME = 'FLOW'
+SLAVEID = 5
+VALUE_REG = 0
+TEMP_REG = 0
+KAB_REG = 0
+
+[SERVER]
+SERVER_ADDR = 'localhost'
+SERVER_PORT = '8080'
