@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	sql = `INSERT INTO sparingdb (time, ph, cod, tss, nh3n) VALUES ($1, $2, $3, $4 $5)`
+	sql = string(`INSERT INTO sparing (time, ph, cod, tss, nh3n, flow) VALUES ($1, $2, $3, $4, $5, $6);`)
 )
 
 type Db struct {
@@ -22,7 +22,6 @@ func DbInit(c *config.Config) *Db {
 	return &Db{
 		c: c,
 	}
-
 }
 
 func (d *Db) Connect() error {
@@ -31,19 +30,28 @@ func (d *Db) Connect() error {
 	if err != nil {
 		log.Print("Error Connect to DB: ", err)
 	}
-	defer d.conn.Close(context.Background())
 	return err
 }
 
 func (d *Db) Insert() error {
-	var err error
 	utime := time.Now().Unix()
-	log.Printf("Insert value to db. time: %d, PH: %f, COD: %f, TSS: %f, NH3N: %f", utime, d.c.PH.VALUE, d.c.COD.VALUE, d.c.TSS.VALUE, d.c.NH3N.VALUE)
-	err = d.conn.QueryRow(context.Background(), sql, utime, d.c.PH.VALUE, d.c.COD.VALUE, d.c.TSS.VALUE, d.c.NH3N.VALUE).Scan()
-	if err != nil {
+	ph := d.c.PH.VALUE
+	cod := d.c.COD.VALUE
+	tss := d.c.TSS.VALUE
+	nh3n := d.c.NH3N.VALUE
+	flow := 1.0
+
+	var err error
+	log.Printf("Insert value to db. time: %d, PH: %f, COD: %f, TSS: %f, NH3N: %f, FLOW: %f", utime, ph, cod, tss, nh3n, flow)
+	err = d.conn.QueryRow(context.Background(), sql, utime, ph, cod, tss, nh3n, flow).Scan()
+	if err != pgx.ErrNoRows {
 		log.Print("error insert to db: ", err)
 		return err
 	}
 	log.Print("insert db success")
 	return err
+}
+
+func (d *Db) Close() {
+	d.conn.Close(context.Background())
 }

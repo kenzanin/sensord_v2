@@ -10,7 +10,9 @@ import (
 )
 
 type Db struct {
+	Enable bool
 	Db_Url string
+	Loop   uint32
 }
 
 type Probe struct {
@@ -60,11 +62,12 @@ func ConfigInit() *Config {
 	c := Config{}
 	probe := []*Probe{&c.PH, &c.COD, &c.TSS, &c.NH3N}
 	for _, e := range probe {
-		e.ENABLE = false
+		e.ENABLE = true
 		e.ERROR = false
 		e.TEMP = 0.0
 		e.VALUE = 0.0
 	}
+	c.DB.Enable = true
 	return &c
 }
 

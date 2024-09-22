@@ -1,8 +1,5 @@
 LOOP_DELAY = 1000
 
-[DB]
-Db_Url = 'postgres://kenzanin:123@localhost:5432/sparingdb'
-
 [MODBUS]
 PORT = '/dev/tnt1'
 BAUD = 9600
@@ -48,3 +45,7 @@ KAB_REG = 0
 [SERVER]
 SERVER_ADDR = 'localhost'
 SERVER_PORT = '8080'
+
+[DB]
+Db_Url = 'postgres://postgres:123@localhost:5432/sparingdb'
+Loop = 7200
