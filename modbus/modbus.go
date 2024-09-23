@@ -16,30 +16,27 @@ import (
 type MODBUS struct {
 	handler *modbus.RTUClientHandler
 	mutex   *sync.RWMutex
+	c       *config.Config
 }
 
 const (
-	retry       = int(10)
 	retry_delay = time.Millisecond * 250
 )
 
-func ModbusInit(s *sync.RWMutex, c *config.Modbus) (*MODBUS, error) {
+func ModbusInit(c *config.Config) (*MODBUS, error) {
 	h := &MODBUS{
-		handler: modbus.NewRTUClientHandler(c.PORT),
-		mutex:   s,
+		handler: modbus.NewRTUClientHandler(c.MODBUS.PORT),
+		c:       c,
 	}
-	handler := h.handler
-
-	handler.Timeout = time.Millisecond * time.Duration(c.TIMEOUT)
-	handler.BaudRate = c.BAUD
-	handler.DataBits = c.DATABITS
-	handler.Parity = c.PARITY
-	err := handler.Connect()
+	h.handler.Timeout = time.Millisecond * time.Duration(c.MODBUS.TIMEOUT)
+	h.handler.BaudRate = c.MODBUS.BAUD
+	h.handler.DataBits = c.MODBUS.DATABITS
+	h.handler.Parity = c.MODBUS.PARITY
+	err := h.handler.Connect()
 	if err != nil {
 		log.Fatal("Modbus init error: ", err)
 		return nil, errors.New("Modbus init Error")
 	}
-	defer handler.Close()
 	return h, nil
 }
 
@@ -53,12 +50,12 @@ func (m *MODBUS) ReadFloat32(c *config.Probe) (float32, float32, error) {
 	var err error
 	value := float32(0.0)
 	temperature := float32(0.0)
-	for i := 0; i < retry; i += 1 {
+	for i := 0; i < c.READ_RETRY; i += 1 {
 		res, er := client.ReadHoldingRegisters(c.VALUE_REG, 2)
 		err = er
 		if er != nil {
 			log.Print("error reading ", c.NAME, " value: ", err)
-			time.Sleep(retry_delay)
+			time.Sleep(time.Millisecond * time.Duration(m.c.MODBUS.TIMEOUT))
 			continue
 		}
 		tmp01 := binary.LittleEndian.Uint32(res)
@@ -68,12 +65,12 @@ func (m *MODBUS) ReadFloat32(c *config.Probe) (float32, float32, error) {
 	}
 
 	if c.TEMP_REG != 0 {
-		for i := 0; i < retry; i += 1 {
+		for i := 0; i < c.READ_RETRY; i += 1 {
 			res, er := client.ReadHoldingRegisters(c.TEMP_REG, 2)
 			err = er
 			if er != nil {
 				log.Print("error reading ", c.NAME, " temp: ", err)
-				time.Sleep(retry_delay)
+				time.Sleep(time.Millisecond * time.Duration(m.c.MODBUS.TIMEOUT))
 				continue
 			}
 			tmp01 := binary.LittleEndian.Uint32(res)
@@ -96,7 +93,7 @@ func (m *MODBUS) ReadFlow(c *config.Probe) (float32, uint32, error) {
 	var err error
 	value := float32(0.0)
 	total := uint32(0)
-	for i := 0; i < retry; i += 1 {
+	for i := 0; i < c.READ_RETRY; i += 1 {
 		res, er := client.ReadHoldingRegisters(c.VALUE_REG, 4)
 		err = er
 		if er != nil {
@@ -124,7 +121,7 @@ func (m *MODBUS) ReadKAB(c *config.Probe) (float32, float32, error) {
 	var err error
 	ka := float32(0)
 	kb := float32(0)
-	for i := 0; i < retry; i += 1 {
+	for i := 0; i < c.READ_RETRY; i += 1 {
 		res, er := client.ReadHoldingRegisters(c.KAB_REG, 4)
 		err = er
 		if err != nil {
@@ -154,7 +151,7 @@ func (m *MODBUS) WriteKB(c *config.Probe, ka float32, kb float32) error {
 	binary.LittleEndian.PutUint32(var01[2:3], math.Float32bits(kb))
 	var err error
 	var res []byte
-	for i := 0; i < retry; i += 1 {
+	for i := 0; i < c.READ_RETRY; i += 1 {
 		r, er := client.WriteMultipleRegisters(c.KAB_REG, 4, var01)
 		err = er
 		if err != nil {

@@ -12,13 +12,13 @@ import (
 func TestServer(t *testing.T) {
 	c := config.ConfigInit()
 	c.Load("../config.toml")
-	mod, _ := modbus.ModbusInit(&c.Mutex, &c.MODBUS)
+	mod, _ := modbus.ModbusInit(c)
 	d := db.DbInit(c)
 	err := d.Connect()
 	if err != nil {
 		t.Fatal("error db connect")
 	}
-	l := loop.LOOPInit()
+	l := loop.LOOPInit(c)
 	l.Loop(c, mod, d)
 	p := []*config.Probe{&c.PH, &c.COD, &c.TSS, &c.NH3N}
 	for _, e := range p {

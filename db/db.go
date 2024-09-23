@@ -44,7 +44,10 @@ func (d *Db) Insert() error {
 	var err error
 	log.Printf("Insert value to db. time: %d, PH: %f, COD: %f, TSS: %f, NH3N: %f, FLOW: %f", utime, ph, cod, tss, nh3n, flow)
 	err = d.conn.QueryRow(context.Background(), sql, utime, ph, cod, tss, nh3n, flow).Scan()
-	if err != pgx.ErrNoRows {
+	if err == pgx.ErrNoRows {
+		err = nil
+	}
+	if err != nil {
 		log.Print("error insert to db: ", err)
 		return err
 	}

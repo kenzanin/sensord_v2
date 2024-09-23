@@ -15,7 +15,7 @@ func TestLoop(t *testing.T) {
 	if err != nil {
 		t.Fatal("error load config: ", err)
 	}
-	m, err := modbus.ModbusInit(&c.Mutex, &c.MODBUS)
+	m, err := modbus.ModbusInit(c)
 	if err != nil {
 		t.Fatal("error ModbusInit: ", err)
 	}
@@ -26,7 +26,7 @@ func TestLoop(t *testing.T) {
 		t.Fatal("error db connect")
 	}
 
-	l := loop.LOOPInit()
+	l := loop.LOOPInit(c)
 	l.Loop(c, m, d)
 
 	p := []*config.Probe{&c.PH, &c.COD, &c.TSS, &c.NH3N}

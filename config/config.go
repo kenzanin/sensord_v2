@@ -9,6 +9,11 @@ import (
 	toml "github.com/pelletier/go-toml/v2"
 )
 
+type Loop struct {
+	LOOP_READER uint32
+	LOOP_DB     uint32
+}
+
 type Db struct {
 	Enable bool
 	Db_Url string
@@ -16,19 +21,20 @@ type Db struct {
 }
 
 type Probe struct {
-	NAME      string
-	SLAVEID   byte
-	VALUE_REG uint16
-	TEMP_REG  uint16
-	KAB_REG   uint16
-	FLOW      float32 `toml:"-"`
-	TOTAL     uint32  `toml:"-"`
-	VALUE     float32 `toml:"-"`
-	TEMP      float32 `toml:"-"`
-	ENABLE    bool    `toml:"-"`
-	ERROR     bool    `toml:"-"`
-	KA_VALUE  float32 `toml:"-"`
-	KB_VALUE  float32 `toml:"-"`
+	NAME       string
+	SLAVEID    byte
+	VALUE_REG  uint16
+	TEMP_REG   uint16
+	KAB_REG    uint16
+	ENABLE     bool
+	READ_RETRY int
+	FLOW       float32 `toml:"-"`
+	TOTAL      uint32  `toml:"-"`
+	VALUE      float32 `toml:"-"`
+	TEMP       float32 `toml:"-"`
+	ERROR      bool    `toml:"-"`
+	KA_VALUE   float32 `toml:"-"`
+	KB_VALUE   float32 `toml:"-"`
 }
 
 type Modbus struct {
@@ -45,17 +51,17 @@ type Server struct {
 }
 
 type Config struct {
-	MODBUS     Modbus
-	PH         Probe
-	COD        Probe
-	NH3N       Probe
-	TSS        Probe
-	FLOW       Probe
-	LOOP_DELAY uint32
-	SERVER     Server
-	DB         Db
-	PATH       string       `toml:"-"`
-	Mutex      sync.RWMutex `toml:"-" json:"-"`
+	MODBUS Modbus
+	PH     Probe
+	COD    Probe
+	NH3N   Probe
+	TSS    Probe
+	FLOW   Probe
+	SERVER Server
+	DB     Db
+	LOOP   Loop
+	PATH   string       `toml:"-"`
+	Mutex  sync.RWMutex `toml:"-" json:"-"`
 }
 
 func ConfigInit() *Config {

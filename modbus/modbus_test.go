@@ -9,7 +9,7 @@ import (
 func TestModbusInit(t *testing.T) {
 	c := config.ConfigInit()
 	c.Load("../config.toml")
-	_, err := modbus.ModbusInit(&c.Mutex, &c.MODBUS)
+	_, err := modbus.ModbusInit(c)
 	if err != nil {
 		t.Fatal("error init modbus: ", err)
 	}
@@ -18,7 +18,7 @@ func TestModbusInit(t *testing.T) {
 func TestReadingPH(t *testing.T) {
 	c := config.ConfigInit()
 	c.Load("../config.toml")
-	m, err := modbus.ModbusInit(&c.Mutex, &c.MODBUS)
+	m, err := modbus.ModbusInit(c)
 	if err != nil {
 		t.Fatal("error init modbus: ", err)
 	}
