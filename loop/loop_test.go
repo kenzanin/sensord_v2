@@ -31,12 +31,12 @@ func TestLoop(t *testing.T) {
 
 	p := []*config.Probe{&c.PH, &c.COD, &c.TSS, &c.NH3N}
 	for _, e := range p {
-		e.ENABLE = true
+		e.Enable = true
 	}
 
 	time.Sleep(time.Second * 3)
 
 	for _, e := range p {
-		t.Log("value ", e.NAME, ": ", e.VALUE)
+		t.Log("value ", e.Name, ": ", e.Value)
 	}
 }

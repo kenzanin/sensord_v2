@@ -39,10 +39,10 @@ func (s *server) probe_write() func(w http.ResponseWriter, r *http.Request) {
 		if len(req) > 0 {
 			ka, err := strconv.ParseFloat(req, 32)
 			if err != nil {
-				res := []byte(fmt.Sprintf("{\"%s\":%t, \"error\": \"write_ka %s\" }", probe.NAME, probe.ENABLE, err))
+				res := []byte(fmt.Sprintf("{\"%s\":%t, \"error\": \"write_ka %s\" }", probe.Name, probe.Enable, err))
 				w.Write(res)
 			}
-			res := []byte(fmt.Sprintf("{\"%s\":%t, \"write_ka\": \"%f\" }", probe.NAME, probe.ENABLE, ka))
+			res := []byte(fmt.Sprintf("{\"%s\":%t, \"write_ka\": \"%f\" }", probe.Name, probe.Enable, ka))
 			w.Write([]byte(res))
 		}
 
@@ -50,10 +50,10 @@ func (s *server) probe_write() func(w http.ResponseWriter, r *http.Request) {
 		if len(req) > 0 {
 			kb, err := strconv.ParseFloat(req, 32)
 			if err != nil {
-				res := []byte(fmt.Sprintf("{\"%s\":%t, \"error\": \"write_kb %s\" }", probe.NAME, probe.ENABLE, err))
+				res := []byte(fmt.Sprintf("{\"%s\":%t, \"error\": \"write_kb %s\" }", probe.Name, probe.Enable, err))
 				w.Write(res)
 			}
-			res := []byte(fmt.Sprintf("{\"%s\":%t, \"write_kb\": \"%f\" }", probe.NAME, probe.ENABLE, kb))
+			res := []byte(fmt.Sprintf("{\"%s\":%t, \"write_kb\": \"%f\" }", probe.Name, probe.Enable, kb))
 			w.Write([]byte(res))
 		}
 	}
@@ -80,15 +80,15 @@ func (s *server) probe_read() func(w http.ResponseWriter, r *http.Request) {
 		req := r.URL.Query().Get("read")
 		if len(req) > 0 {
 			if req == "true" {
-				if !probe.ENABLE {
-					probe.ENABLE = true
+				if !probe.Enable {
+					probe.Enable = true
 				}
-				w.Write([]byte(fmt.Sprintf("{\"%s\":\"%t\", \"value\": %f, \"temperature\": %f}", probe.NAME, probe.ENABLE, probe.VALUE, probe.TEMP)))
+				w.Write([]byte(fmt.Sprintf("{\"%s\":\"%t\", \"value\": %f, \"temperature\": %f}", probe.Name, probe.Enable, probe.Value, probe.Temp)))
 			} else if req == "false" {
-				probe.ENABLE = false
-				w.Write([]byte(fmt.Sprintf("{\"%s\":\"%t\"}", probe.NAME, probe.ENABLE)))
+				probe.Enable = false
+				w.Write([]byte(fmt.Sprintf("{\"%s\":\"%t\"}", probe.Name, probe.Enable)))
 			}
-			log.Print(probe.NAME, " Status: ", probe.ENABLE)
+			log.Print(probe.Name, " Status: ", probe.Enable)
 			return
 		}
 	}
@@ -106,5 +106,5 @@ func (s *server) Server() {
 	http.HandleFunc("/write/NH3N", s.probe_write())
 	http.HandleFunc("/write/TSS", s.probe_write())
 	http.HandleFunc("/write/FLOW", s.probe_write())
-	http.ListenAndServe(s.c.SERVER.SERVER_ADDR+":"+s.c.SERVER.SERVER_PORT, nil)
+	http.ListenAndServe(s.c.SERVER.ADDR+":"+s.c.SERVER.PORT, nil)
 }

@@ -26,7 +26,7 @@ func DbInit(c *config.Config) *Db {
 
 func (d *Db) Connect() error {
 	var err error
-	d.conn, err = pgx.Connect(context.Background(), d.c.DB.Db_Url)
+	d.conn, err = pgx.Connect(context.Background(), d.c.DB.Url)
 	if err != nil {
 		log.Print("Error Connect to DB: ", err)
 	}
@@ -35,10 +35,10 @@ func (d *Db) Connect() error {
 
 func (d *Db) Insert() error {
 	utime := time.Now().Unix()
-	ph := d.c.PH.VALUE
-	cod := d.c.COD.VALUE
-	tss := d.c.TSS.VALUE
-	nh3n := d.c.NH3N.VALUE
+	ph := d.c.PH.Value
+	cod := d.c.COD.Value
+	tss := d.c.TSS.Value
+	nh3n := d.c.NH3N.Value
 	flow := 1.0
 
 	var err error

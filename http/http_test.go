@@ -22,7 +22,7 @@ func TestServer(t *testing.T) {
 	l.Loop(c, mod, d)
 	p := []*config.Probe{&c.PH, &c.COD, &c.TSS, &c.NH3N}
 	for _, e := range p {
-		e.ENABLE = true
+		e.Enable = true
 	}
 	s := server.ServerInit(c)
 	s.Server()

@@ -15,8 +15,8 @@ type LOOP struct {
 
 func LOOPInit(c *config.Config) *LOOP {
 	return &LOOP{
-		loop_reader: c.LOOP.LOOP_READER,
-		loop_db:     c.LOOP.LOOP_DB,
+		loop_reader: c.LOOP.Reader,
+		loop_db:     c.LOOP.Db,
 	}
 }
 
@@ -27,28 +27,28 @@ func (l *LOOP) Loop(c *config.Config, m *modbus.MODBUS, d *db.Db) {
 		for {
 			start := time.Now()
 			for _, e := range p {
-				enable := e.ENABLE
+				enable := e.Enable
 				if enable {
-					log.Print("reading probe: ", e.NAME)
+					log.Print("reading probe: ", e.Name)
 					val, tempe, err := m.ReadFloat32(e)
 					if err != nil {
 						c.Mutex.Lock()
-						e.ERROR = true
+						e.Error = true
 						c.Mutex.Unlock()
-						log.Print("error reading probe slave, ", e.NAME, ": ", err)
+						log.Print("error reading probe slave, ", e.Name, ": ", err)
 					} else {
 						c.Mutex.Lock()
-						e.ERROR = false
+						e.Error = false
 						c.Mutex.Unlock()
 					}
 
 					c.Mutex.Lock()
-					e.VALUE = val
-					e.TEMP = tempe
+					e.Value = val
+					e.Temp = tempe
 					c.Mutex.Unlock()
 
 				} else {
-					log.Print("reading probe disabled: ", e.NAME)
+					log.Print("reading probe disabled: ", e.Name)
 					continue
 				}
 			}
@@ -73,8 +73,8 @@ func (l *LOOP) Loop(c *config.Config, m *modbus.MODBUS, d *db.Db) {
 				if err != nil {
 					log.Print("loop insert db error: ", err)
 				}
-				log.Print("insert db sleep for: ", c.DB.Loop, " ms")
-				time.Sleep(time.Millisecond * time.Duration(c.DB.Loop))
+				log.Print("insert db sleep for: ", c.LOOP.Db, " ms")
+				time.Sleep(time.Millisecond * time.Duration(c.LOOP.Db))
 			}
 		}
 	}()

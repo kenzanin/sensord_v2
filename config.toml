@@ -1,52 +1,68 @@
-
 [MODBUS]
-PORT = '/dev/tnt1'
-BAUD = 9600
-DATABITS = 8
-PARITY = 'N'
-TIMEOUT = 250
-LOOP_DELAY = 5000
-LOOP_RETRY = 10
+Port = '/dev/tnt1'
+Baud = 9600
+Databits = 8
+Parity = 'N'
+Time_Out = 0
 
 [PH]
-NAME = 'PH'
-SLAVEID = 1
-VALUE_REG = 0
-TEMP_REG = 2
-KAB_REG = 0
+Name = 'PH'
+Id = 1
+Value_reg = 0
+Temp_Reg = 0
+Kab_Reg = 0
+Enable = false
+Retry = 10
+Retry_Delay = 250
 
 [COD]
-NAME = 'COD'
-SLAVEID = 2
-VALUE_REG = 0
-TEMP_REG = 0
-KAB_REG = 0
+Name = 'COD'
+Id = 2
+Value_reg = 0
+Temp_Reg = 0
+Kab_Reg = 0
+Enable = false
+Retry = 10
+Retry_Delay = 250
 
 [NH3N]
-NAME = 'NH3N'
-SLAVEID = 3
-VALUE_REG = 0
-TEMP_REG = 0
-KAB_REG = 0
+Name = 'NH3N'
+Id = 3
+Value_reg = 0
+Temp_Reg = 0
+Kab_Reg = 0
+Enable = false
+Retry = 10
+Retry_Delay = 250
 
 [TSS]
-NAME = 'TSS'
-SLAVEID = 4
-VALUE_REG = 0
-TEMP_REG = 2
-KAB_REG = 0
+Name = 'TSS'
+Id = 4
+Value_reg = 0
+Temp_Reg = 0
+Kab_Reg = 0
+Enable = false
+Retry = 10
+Retry_Delay = 250
 
 [FLOW]
-NAME = 'FLOW'
-SLAVEID = 5
-VALUE_REG = 0
-TEMP_REG = 0
-KAB_REG = 0
+Name = 'FLOW'
+Id = 5
+Value_reg = 0
+Temp_Reg = 0
+Kab_Reg = 0
+Enable = false
+Retry = 10
+Retry_Delay = 250
 
 [SERVER]
-SERVER_ADDR = 'localhost'
-SERVER_PORT = '8080'
+ADDR = 'localhost'
+PORT = '8080'
 
 [DB]
-Db_Url = 'postgres://postgres:123@localhost:5432/sparingdb'
-Loop = 1000
+Enable = true
+Url = 'postgresql://postgres:123@localhost:5432/sparingdb'
+
+[LOOP]
+Reader = 1000
+Db = 1000

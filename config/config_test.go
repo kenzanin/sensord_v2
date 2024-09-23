@@ -8,10 +8,10 @@ import (
 func TestConfigInit(t *testing.T) {
 	config := Config.ConfigInit()
 	config.Load("../config.toml")
-	if config.MODBUS.PORT != "/dev/tnt1" {
+	if config.MODBUS.Port != "/dev/tnt1" {
 		t.Error("port error hehe.")
 	}
-	if config.MODBUS.BAUD != 9600 {
+	if config.MODBUS.Baud != 9600 {
 		t.Error("baud error.")
 	}
 }

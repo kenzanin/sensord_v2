@@ -10,44 +10,44 @@ import (
 )
 
 type Loop struct {
-	LOOP_READER uint32
-	LOOP_DB     uint32
+	Reader uint32
+	Db     uint32
 }
 
 type Db struct {
 	Enable bool
-	Db_Url string
-	Loop   uint32
+	Url    string
 }
 
 type Probe struct {
-	NAME       string
-	SLAVEID    byte
-	VALUE_REG  uint16
-	TEMP_REG   uint16
-	KAB_REG    uint16
-	ENABLE     bool
-	READ_RETRY int
-	FLOW       float32 `toml:"-"`
-	TOTAL      uint32  `toml:"-"`
-	VALUE      float32 `toml:"-"`
-	TEMP       float32 `toml:"-"`
-	ERROR      bool    `toml:"-"`
-	KA_VALUE   float32 `toml:"-"`
-	KB_VALUE   float32 `toml:"-"`
+	Name        string
+	Id          byte
+	Value_reg   uint16
+	Temp_Reg    uint16
+	Kab_Reg     uint16
+	Enable      bool
+	Retry       int
+	Retry_Delay uint32
+	Flow        float32 `toml:"-"`
+	Total       uint32  `toml:"-"`
+	Value       float32 `toml:"-"`
+	Temp        float32 `toml:"-"`
+	Error       bool    `toml:"-"`
+	Ka_Value    float32 `toml:"-"`
+	Kb_Value    float32 `toml:"-"`
 }
 
 type Modbus struct {
-	PORT     string
-	BAUD     int
-	DATABITS int
-	PARITY   string
-	TIMEOUT  int
+	Port     string
+	Baud     int
+	Databits int
+	Parity   string
+	Time_Out int
 }
 
 type Server struct {
-	SERVER_ADDR string
-	SERVER_PORT string
+	ADDR string
+	PORT string
 }
 
 type Config struct {
@@ -68,10 +68,9 @@ func ConfigInit() *Config {
 	c := Config{}
 	probe := []*Probe{&c.PH, &c.COD, &c.TSS, &c.NH3N}
 	for _, e := range probe {
-		e.ENABLE = true
-		e.ERROR = false
-		e.TEMP = 0.0
-		e.VALUE = 0.0
+		e.Error = false
+		e.Temp = 0.0
+		e.Value = 0.0
 	}
 	c.DB.Enable = true
 	return &c
