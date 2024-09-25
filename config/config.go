@@ -9,14 +9,10 @@ import (
 	toml "github.com/pelletier/go-toml/v2"
 )
 
-type Loop struct {
-	Reader uint32
-	Db     uint32
-}
-
 type Db struct {
 	Enable bool
 	Url    string
+	Sleep  uint32
 }
 
 type Probe struct {
@@ -43,11 +39,12 @@ type Modbus struct {
 	Databits int
 	Parity   string
 	Time_Out int
+	Sleep    uint32
 }
 
 type Server struct {
-	ADDR string
-	PORT string
+	Addr string
+	Port string
 }
 
 type Config struct {
@@ -59,7 +56,6 @@ type Config struct {
 	FLOW   Probe
 	SERVER Server
 	DB     Db
-	LOOP   Loop
 	PATH   string       `toml:"-"`
 	Mutex  sync.RWMutex `toml:"-" json:"-"`
 }

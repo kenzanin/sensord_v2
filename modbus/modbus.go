@@ -7,7 +7,6 @@ import (
 	"log"
 	"math"
 	config "sensord_v2/config"
-	"sync"
 	"time"
 
 	"github.com/goburrow/modbus"
@@ -15,14 +14,12 @@ import (
 
 type MODBUS struct {
 	handler *modbus.RTUClientHandler
-	mutex   *sync.RWMutex
 	c       *config.Config
 }
 
 func ModbusInit(c *config.Config) (*MODBUS, error) {
 	h := &MODBUS{
 		handler: modbus.NewRTUClientHandler(c.MODBUS.Port),
-		mutex:   &c.Mutex,
 		c:       c,
 	}
 	h.handler.Timeout = time.Millisecond * time.Duration(c.MODBUS.Time_Out)
@@ -38,8 +35,8 @@ func ModbusInit(c *config.Config) (*MODBUS, error) {
 }
 
 func (m *MODBUS) ReadFloat32(c *config.Probe) (float32, float32, error) {
-	m.mutex.Lock()
-	defer m.mutex.Unlock()
+	m.c.Mutex.Lock()
+	defer m.c.Mutex.Unlock()
 
 	h := m.handler
 	h.SlaveId = c.Id
@@ -81,8 +78,8 @@ func (m *MODBUS) ReadFloat32(c *config.Probe) (float32, float32, error) {
 }
 
 func (m *MODBUS) ReadFlow(c *config.Probe) (float32, uint32, error) {
-	m.mutex.Lock()
-	defer m.mutex.Unlock()
+	m.c.Mutex.Lock()
+	defer m.c.Mutex.Unlock()
 
 	h := m.handler
 	h.SlaveId = c.Id
@@ -109,8 +106,8 @@ func (m *MODBUS) ReadFlow(c *config.Probe) (float32, uint32, error) {
 }
 
 func (m *MODBUS) ReadKAB(c *config.Probe) (float32, float32, error) {
-	m.mutex.Lock()
-	defer m.mutex.Unlock()
+	m.c.Mutex.Lock()
+	defer m.c.Mutex.Unlock()
 
 	h := m.handler
 	h.SlaveId = c.Id
@@ -138,8 +135,8 @@ func (m *MODBUS) ReadKAB(c *config.Probe) (float32, float32, error) {
 }
 
 func (m *MODBUS) WriteKB(c *config.Probe, ka float32, kb float32) error {
-	m.mutex.Lock()
-	defer m.mutex.Unlock()
+	m.c.Mutex.Lock()
+	defer m.c.Mutex.Unlock()
 
 	h := m.handler
 	h.SlaveId = c.Id
@@ -162,4 +159,49 @@ func (m *MODBUS) WriteKB(c *config.Probe, ka float32, kb float32) error {
 		break
 	}
 	return err
+}
+
+func (m *MODBUS) Loop() {
+	c := m.c
+	log.Print("entering loop with duration: ", c.MODBUS.Sleep, " ms.")
+	go func() {
+		p := []*config.Probe{&c.PH, &c.COD, &c.TSS, &c.NH3N}
+		for {
+			start := time.Now()
+			for _, e := range p {
+				enable := e.Enable
+				if enable {
+					log.Print("reading probe: ", e.Name)
+					val, tempe, err := m.ReadFloat32(e)
+					if err != nil {
+						c.Mutex.Lock()
+						e.Error = true
+						c.Mutex.Unlock()
+						log.Print("error reading probe slave, ", e.Name, ": ", err)
+					} else {
+						c.Mutex.Lock()
+						e.Error = false
+						c.Mutex.Unlock()
+					}
+
+					c.Mutex.Lock()
+					e.Value = val
+					e.Temp = tempe
+					c.Mutex.Unlock()
+
+				} else {
+					log.Print("reading probe disabled: ", e.Name)
+					continue
+				}
+			}
+			duration := time.Since(start)
+			var loop_delay int64
+			log.Print("probe reading duration: ", duration.Milliseconds(), " loop delay: ", (time.Millisecond * time.Duration(time.Duration(c.MODBUS.Sleep))).Milliseconds())
+			if duration.Milliseconds() < (time.Millisecond.Milliseconds() * int64(c.MODBUS.Sleep)) {
+				loop_delay = time.Millisecond.Milliseconds()*int64(c.MODBUS.Sleep) - duration.Milliseconds()
+			}
+			log.Print("reading probe sleep for: ", loop_delay)
+			time.Sleep(time.Millisecond * time.Duration(loop_delay))
+		}
+	}()
 }

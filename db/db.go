@@ -58,3 +58,23 @@ func (d *Db) Insert() error {
 func (d *Db) Close() {
 	d.conn.Close(context.Background())
 }
+
+func (d *Db) Loop() {
+	c := d.c
+	go func() {
+		var enable bool
+		for {
+			c.Mutex.Lock()
+			enable = c.DB.Enable
+			d.c.Mutex.Unlock()
+			if enable {
+				err := d.Insert()
+				if err != nil {
+					log.Print("loop insert db error: ", err)
+				}
+				log.Print("insert db sleep for: ", c.DB.Sleep, " ms")
+				time.Sleep(time.Millisecond * time.Duration(c.DB.Sleep))
+			}
+		}
+	}()
+}

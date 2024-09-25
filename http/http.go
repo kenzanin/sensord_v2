@@ -1,6 +1,7 @@
 package http
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -94,7 +95,7 @@ func (s *server) probe_read() func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (s *server) Server() {
+func (s *server) Serve() {
 	http.HandleFunc("/read/PH", s.probe_read())
 	http.HandleFunc("/read/COD", s.probe_read())
 	http.HandleFunc("/read/NH3N", s.probe_read())
@@ -106,5 +107,9 @@ func (s *server) Server() {
 	http.HandleFunc("/write/NH3N", s.probe_write())
 	http.HandleFunc("/write/TSS", s.probe_write())
 	http.HandleFunc("/write/FLOW", s.probe_write())
-	http.ListenAndServe(s.c.SERVER.ADDR+":"+s.c.SERVER.PORT, nil)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(s.c)
+	})
+	http.ListenAndServe(s.c.SERVER.Addr+":"+s.c.SERVER.Port, nil)
 }
