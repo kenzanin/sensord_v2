@@ -24,9 +24,14 @@ type Probe struct {
 	Enable      bool
 	Retry       int
 	Retry_Delay uint32
+	Offset_a    float32
+	Offset_b    float32
+	Min         float32
+	Max         float32
 	Flow        float32 `toml:"-"`
 	Total       uint32  `toml:"-"`
-	Value       float32 `toml:"-"`
+	Value_raw   float32 `toml:"-"`
+	Value_calc  float32 `toml:"-"`
 	Temp        float32 `toml:"-"`
 	Error       bool    `toml:"-"`
 	Ka_Value    float32 `toml:"-"`
@@ -66,7 +71,6 @@ func ConfigInit() *Config {
 	for _, e := range probe {
 		e.Error = false
 		e.Temp = 0.0
-		e.Value = 0.0
 	}
 	c.DB.Enable = true
 	return &c

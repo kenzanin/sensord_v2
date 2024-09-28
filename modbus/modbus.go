@@ -54,7 +54,7 @@ func (m *MODBUS) ReadFloat32(c *config.Probe) (float32, float32, error) {
 		}
 		tmp01 := binary.LittleEndian.Uint32(res)
 		value = math.Float32frombits(tmp01)
-		log.Print("Succes reading ", c.Name, " value[]: ", hex.EncodeToString(res), " value: ", value)
+		log.Print("Succes reading ", c.Name, " value(hex): ", hex.EncodeToString(res), " value: ", value)
 		break
 	}
 
@@ -69,7 +69,7 @@ func (m *MODBUS) ReadFloat32(c *config.Probe) (float32, float32, error) {
 			}
 			tmp01 := binary.LittleEndian.Uint32(res)
 			temperature = math.Float32frombits(tmp01)
-			log.Print("Succes reading ", c.Name, " temp[]: ", hex.EncodeToString(res), " temp: ", temperature)
+			log.Print("Succes reading ", c.Name, " temp(hex): ", hex.EncodeToString(res), " temp: ", temperature)
 			break
 		}
 	}
@@ -95,10 +95,10 @@ func (m *MODBUS) ReadFlow(c *config.Probe) (float32, uint32, error) {
 			time.Sleep(time.Duration(c.Retry_Delay) * time.Millisecond)
 			continue
 		}
-		tmp01 := binary.LittleEndian.Uint32(res[0:1])
+		tmp01 := binary.LittleEndian.Uint32(res[0:4])
 		value = math.Float32frombits(tmp01)
-		total = binary.LittleEndian.Uint32(res[2:3])
-		log.Print("Succes reading ", c.Name, " flow and total : ", res[0:3], " ", res[4:7])
+		total = binary.LittleEndian.Uint32(res[4:8])
+		log.Print("Succes reading ", c.Name, " flow (hex): ", hex.EncodeToString(res[0:4]), " flow: ", value, " total (hex): ", hex.EncodeToString(res[4:7]), " total: ", total)
 		break
 	}
 	time.Sleep(time.Duration(c.Retry_Delay) * time.Millisecond)
@@ -169,31 +169,50 @@ func (m *MODBUS) Loop() {
 		for {
 			start := time.Now()
 			for _, e := range p {
+				c.Mutex.Lock()
 				enable := e.Enable
+				c.Mutex.Unlock()
 				if enable {
 					log.Print("reading probe: ", e.Name)
 					val, tempe, err := m.ReadFloat32(e)
+					c.Mutex.Lock()
 					if err != nil {
-						c.Mutex.Lock()
 						e.Error = true
-						c.Mutex.Unlock()
 						log.Print("error reading probe slave, ", e.Name, ": ", err)
 					} else {
-						c.Mutex.Lock()
 						e.Error = false
-						c.Mutex.Unlock()
+						e.Value_raw = val
+						e.Temp = tempe
+						e.Value_calc = (val * e.Offset_a) + e.Offset_b
 					}
-
-					c.Mutex.Lock()
-					e.Value = val
-					e.Temp = tempe
 					c.Mutex.Unlock()
-
 				} else {
 					log.Print("reading probe disabled: ", e.Name)
 					continue
 				}
 			}
+
+			// reading flow meter should goes here
+			c.Mutex.Lock()
+			enable := c.FLOW.Enable
+			c.Mutex.Unlock()
+			if enable {
+				log.Print("Reading probe: ", c.FLOW.Name)
+				val, tot, err := m.ReadFlow(&c.FLOW)
+				c.Mutex.Lock()
+				if err != nil {
+					c.FLOW.Error = true
+					log.Print("error reading probe ", c.FLOW.Name, ": ", err)
+				} else {
+					c.FLOW.Error = false
+					c.FLOW.Flow = val
+					c.FLOW.Total = tot
+				}
+				c.Mutex.Unlock()
+			} else {
+				log.Print("reading probe disabled: ", c.FLOW.Name)
+			}
+
 			duration := time.Since(start)
 			var loop_delay int64
 			log.Print("probe reading duration: ", duration.Milliseconds(), " loop delay: ", (time.Millisecond * time.Duration(time.Duration(c.MODBUS.Sleep))).Milliseconds())

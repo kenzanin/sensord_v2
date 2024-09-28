@@ -10,11 +10,15 @@ Sleep = 5000
 Name = 'PH'
 Id = 1
 Value_reg = 0
-Temp_Reg = 0
+Temp_Reg = 2
 Kab_Reg = 0
 Enable = true
 Retry = 10
 Retry_Delay = 100
+Offset_a = 1.0
+Offset_b = 0.0
+Min = 4.0
+Max = 10.0
 
 [COD]
 Name = 'COD'
@@ -25,6 +29,10 @@ Kab_Reg = 0
 Enable = true
 Retry = 10
 Retry_Delay = 100
+Offset_a = 1.0
+Offset_b = 0.0
+Min = 0.0
+Max = 150.0
 
 [NH3N]
 Name = 'NH3N'
@@ -35,6 +43,10 @@ Kab_Reg = 0
 Enable = true
 Retry = 10
 Retry_Delay = 100
+Offset_a = 1.0
+Offset_b = 0.0
+Min = 0.15
+Max = 10.0
 
 [TSS]
 Name = 'TSS'
@@ -45,6 +57,10 @@ Kab_Reg = 0
 Enable = true
 Retry = 10
 Retry_Delay = 100
+Offset_a = 1.0
+Offset_b = 0.0
+Min = 0.0
+Max = 100.0
 
 [FLOW]
 Name = 'FLOW'
@@ -55,6 +71,10 @@ Kab_Reg = 0
 Enable = true
 Retry = 10
 Retry_Delay = 100
+Offset_a = 1.0
+Offset_b = 0.0
+Min = 0.0
+Max = 500.0
 
 [SERVER]
 Addr = 'localhost'

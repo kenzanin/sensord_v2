@@ -82,11 +82,15 @@ func (s *server) probe_read() func(w http.ResponseWriter, r *http.Request) {
 		if len(req) > 0 {
 			if req == "true" {
 				if !probe.Enable {
+					s.c.Mutex.Lock()
 					probe.Enable = true
+					s.c.Mutex.Unlock()
 				}
-				w.Write([]byte(fmt.Sprintf("{\"%s\":\"%t\", \"value\": %f, \"temperature\": %f}", probe.Name, probe.Enable, probe.Value, probe.Temp)))
+				w.Write([]byte(fmt.Sprintf("{\"%s\":\"%t\", \"value\": %f, \"temperature\": %f}", probe.Name, probe.Enable, probe.Value_raw, probe.Temp)))
 			} else if req == "false" {
+				s.c.Mutex.Lock()
 				probe.Enable = false
+				s.c.Mutex.Unlock()
 				w.Write([]byte(fmt.Sprintf("{\"%s\":\"%t\"}", probe.Name, probe.Enable)))
 			}
 			log.Print(probe.Name, " Status: ", probe.Enable)
@@ -109,6 +113,11 @@ func (s *server) Serve() {
 	http.HandleFunc("/write/FLOW", s.probe_write())
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(s.c)
+	})
+	http.HandleFunc("/save", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		s.c.Save()
 		json.NewEncoder(w).Encode(s.c)
 	})
 	http.ListenAndServe(s.c.SERVER.Addr+":"+s.c.SERVER.Port, nil)
