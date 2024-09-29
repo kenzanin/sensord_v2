@@ -19,6 +19,7 @@ Offset_a = 1.0
 Offset_b = 0.0
 Min = 4.0
 Max = 10.0
+Rand_fact = 0.5
 
 [COD]
 Name = 'COD'
@@ -33,6 +34,7 @@ Offset_a = 1.0
 Offset_b = 0.0
 Min = 0.0
 Max = 150.0
+Rand_fact = 1.0
 
 [NH3N]
 Name = 'NH3N'
@@ -47,6 +49,7 @@ Offset_a = 1.0
 Offset_b = 0.0
 Min = 0.15
 Max = 10.0
+Rand_fact = 0.1
 
 [TSS]
 Name = 'TSS'
@@ -61,6 +64,7 @@ Offset_a = 1.0
 Offset_b = 0.0
 Min = 0.0
 Max = 100.0
+Rand_fact = 1.0
 
 [FLOW]
 Name = 'FLOW'
@@ -75,6 +79,7 @@ Offset_a = 1.0
 Offset_b = 0.0
 Min = 0.0
 Max = 500.0
+Rand_fact = 1.0
 
 [SERVER]
 Addr = 'localhost'

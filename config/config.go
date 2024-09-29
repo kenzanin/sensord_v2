@@ -3,8 +3,11 @@ package Config
 import (
 	"errors"
 	"log"
+	"math"
+	"math/rand"
 	"os"
 	"sync"
+	"time"
 
 	toml "github.com/pelletier/go-toml/v2"
 )
@@ -28,6 +31,7 @@ type Probe struct {
 	Offset_b    float32
 	Min         float32
 	Max         float32
+	Rand_fact   float32
 	Flow        float32 `toml:"-"`
 	Total       uint32  `toml:"-"`
 	Value_raw   float32 `toml:"-"`
@@ -65,18 +69,22 @@ type Config struct {
 	Mutex  sync.RWMutex `toml:"-" json:"-"`
 }
 
-func ConfigInit() *Config {
+func ConfigInit(path string) (*Config, error) {
 	c := Config{}
+	if err := c.load(path); err != nil {
+		return nil, err
+	}
+
 	probe := []*Probe{&c.PH, &c.COD, &c.TSS, &c.NH3N}
 	for _, e := range probe {
 		e.Error = false
 		e.Temp = 0.0
 	}
 	c.DB.Enable = true
-	return &c
+	return &c, nil
 }
 
-func (c *Config) Load(path string) error {
+func (c *Config) load(path string) error {
 	// read file
 	toml_file, err := os.ReadFile(path)
 	if err != nil {
@@ -106,4 +114,17 @@ func (c *Config) Save() error {
 		log.Fatal("error writing config.json", err)
 	}
 	return nil
+}
+
+var random = rand.New(rand.NewSource(time.Now().UnixNano()))
+
+func (p *Probe) GetValue_calc() float32 {
+	tmp := p.Value_raw
+	if tmp <= p.Min {
+		tmp = (p.Min + (random.Float32() * p.Rand_fact))
+	} else if tmp >= p.Max {
+		tmp = (p.Max - (random.Float32() * p.Rand_fact))
+	}
+	tmp = float32(math.Round(float64(tmp)*1000) / 1000)
+	return tmp
 }

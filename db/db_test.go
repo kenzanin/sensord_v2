@@ -7,8 +7,7 @@ import (
 )
 
 func TestDb(t *testing.T) {
-	c := config.ConfigInit()
-	err := c.Load("../config.toml")
+	c, err := config.ConfigInit("../sensord.toml")
 	if err != nil {
 		t.Fatal("error load config")
 	}

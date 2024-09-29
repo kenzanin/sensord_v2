@@ -9,11 +9,13 @@ import (
 )
 
 func TestServer(t *testing.T) {
-	c := config.ConfigInit()
-	c.Load("../config.toml")
+	c, err := config.ConfigInit("../sensord.toml")
+	if err != nil {
+		t.Error("error", err)
+	}
 	m, _ := modbus.ModbusInit(c)
 	d := db.DbInit(c)
-	err := d.Connect()
+	err = d.Connect()
 	if err != nil {
 		t.Fatal("error db connect")
 	}

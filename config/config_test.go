@@ -6,8 +6,10 @@ import (
 )
 
 func TestConfigInit(t *testing.T) {
-	config := Config.ConfigInit()
-	config.Load("../config.toml")
+	config, err := Config.ConfigInit("../sensord.toml")
+	if err != nil {
+		t.Error("error", err)
+	}
 	if config.MODBUS.Port != "/dev/tnt1" {
 		t.Error("port error hehe.")
 	}
@@ -17,9 +19,10 @@ func TestConfigInit(t *testing.T) {
 }
 
 func TestConfigSave(t *testing.T) {
-	config := Config.ConfigInit()
-	config.Load("../config.toml")
-
+	config, err := Config.ConfigInit("../sensord.toml")
+	if err != nil {
+		t.Error("error: ", err)
+	}
 	config2 := config
 
 	config.Save()

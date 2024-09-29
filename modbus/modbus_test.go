@@ -7,17 +7,23 @@ import (
 )
 
 func TestModbusInit(t *testing.T) {
-	c := config.ConfigInit()
-	c.Load("../config.toml")
-	_, err := modbus.ModbusInit(c)
+	c, err := config.ConfigInit("../sensord.toml")
+	if err != nil {
+		t.Error("error", err)
+	}
+
+	m, err := modbus.ModbusInit(c)
 	if err != nil {
 		t.Fatal("error init modbus: ", err)
 	}
+	_ = m
 }
 
 func TestReadingPH(t *testing.T) {
-	c := config.ConfigInit()
-	c.Load("../config.toml")
+	c, err := config.ConfigInit("../sensord.toml")
+	if err != nil {
+		t.Error("error: ", err)
+	}
 	m, err := modbus.ModbusInit(c)
 	if err != nil {
 		t.Fatal("error init modbus: ", err)

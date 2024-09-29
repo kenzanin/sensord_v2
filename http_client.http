@@ -12,3 +12,7 @@ GET http://localhost:8080/read/NH3N?read=false
 
 GET http://localhost:8080/
 GET http://localhost:8080/save
+
+GET http://localhost:8080/write/PH?write_offa=1.2&write_offb=0.1
+
+GET http://localhost:8080/read/PROBES

@@ -34,128 +34,128 @@ func ModbusInit(c *config.Config) (*MODBUS, error) {
 	return h, nil
 }
 
-func (m *MODBUS) ReadFloat32(c *config.Probe) (float32, float32, error) {
+func (m *MODBUS) ReadFloat32(p *config.Probe) (float32, float32, error) {
 	m.c.Mutex.Lock()
 	defer m.c.Mutex.Unlock()
 
 	h := m.handler
-	h.SlaveId = c.Id
+	h.SlaveId = p.Id
 	client := modbus.NewClient(h)
 	var err error
 	value := float32(0.0)
 	temperature := float32(0.0)
-	for i := 0; i < c.Retry; i += 1 {
-		res, er := client.ReadHoldingRegisters(c.Value_reg, 2)
+	for i := 0; i < p.Retry; i += 1 {
+		res, er := client.ReadHoldingRegisters(p.Value_reg, 2)
 		err = er
 		if er != nil {
-			log.Print("error reading ", c.Name, " value: ", err)
-			time.Sleep(time.Millisecond * time.Duration(c.Retry_Delay))
+			log.Print("error reading value ", p.Name, " error: ", err)
+			time.Sleep(time.Millisecond * time.Duration(p.Retry_Delay))
 			continue
 		}
 		tmp01 := binary.LittleEndian.Uint32(res)
 		value = math.Float32frombits(tmp01)
-		log.Print("Succes reading ", c.Name, " value(hex): ", hex.EncodeToString(res), " value: ", value)
+		log.Print("Succes reading ", p.Name, " value(hex): ", hex.EncodeToString(res), " value_raw: ", value, " value_calc: ", p.GetValue_calc())
 		break
 	}
 
-	if c.Temp_Reg != 0 {
-		for i := 0; i < c.Retry; i += 1 {
-			res, er := client.ReadHoldingRegisters(c.Temp_Reg, 2)
+	if p.Temp_Reg != 0 {
+		for i := 0; i < p.Retry; i += 1 {
+			res, er := client.ReadHoldingRegisters(p.Temp_Reg, 2)
 			err = er
 			if er != nil {
-				log.Print("error reading ", c.Name, " temp: ", err)
-				time.Sleep(time.Millisecond * time.Duration(c.Retry_Delay))
+				log.Print("error reading temperature ", p.Name, " error: ", err)
+				time.Sleep(time.Millisecond * time.Duration(p.Retry_Delay))
 				continue
 			}
 			tmp01 := binary.LittleEndian.Uint32(res)
 			temperature = math.Float32frombits(tmp01)
-			log.Print("Succes reading ", c.Name, " temp(hex): ", hex.EncodeToString(res), " temp: ", temperature)
+			log.Print("Succes reading ", p.Name, " temp(hex): ", hex.EncodeToString(res), " temp: ", temperature)
 			break
 		}
 	}
-	time.Sleep(time.Duration(c.Retry_Delay) * time.Millisecond)
+	time.Sleep(time.Duration(p.Retry_Delay) * time.Millisecond)
 	return value, temperature, err
 }
 
-func (m *MODBUS) ReadFlow(c *config.Probe) (float32, uint32, error) {
+func (m *MODBUS) ReadFlow(p *config.Probe) (float32, uint32, error) {
 	m.c.Mutex.Lock()
 	defer m.c.Mutex.Unlock()
 
 	h := m.handler
-	h.SlaveId = c.Id
+	h.SlaveId = p.Id
 	client := modbus.NewClient(h)
 	var err error
 	value := float32(0.0)
 	total := uint32(0)
-	for i := 0; i < c.Retry; i += 1 {
-		res, er := client.ReadHoldingRegisters(c.Value_reg, 4)
+	for i := 0; i < p.Retry; i += 1 {
+		res, er := client.ReadHoldingRegisters(p.Value_reg, 4)
 		err = er
 		if er != nil {
-			log.Print("error reading ", c.Name, " flow and total: ", err)
-			time.Sleep(time.Duration(c.Retry_Delay) * time.Millisecond)
+			log.Print("error reading flow and total: ", p.Name, " error: ", err)
+			time.Sleep(time.Duration(p.Retry_Delay) * time.Millisecond)
 			continue
 		}
 		tmp01 := binary.LittleEndian.Uint32(res[0:4])
 		value = math.Float32frombits(tmp01)
 		total = binary.LittleEndian.Uint32(res[4:8])
-		log.Print("Succes reading ", c.Name, " flow (hex): ", hex.EncodeToString(res[0:4]), " flow: ", value, " total (hex): ", hex.EncodeToString(res[4:7]), " total: ", total)
+		log.Print("Succes reading ", p.Name, " flow (hex): ", hex.EncodeToString(res[0:4]), " flow: ", value, " total (hex): ", hex.EncodeToString(res[4:7]), " total: ", total)
 		break
 	}
-	time.Sleep(time.Duration(c.Retry_Delay) * time.Millisecond)
+	time.Sleep(time.Duration(p.Retry_Delay) * time.Millisecond)
 	return value, total, err
 }
 
-func (m *MODBUS) ReadKAB(c *config.Probe) (float32, float32, error) {
+func (m *MODBUS) ReadKAB(p *config.Probe) (float32, float32, error) {
 	m.c.Mutex.Lock()
 	defer m.c.Mutex.Unlock()
 
 	h := m.handler
-	h.SlaveId = c.Id
+	h.SlaveId = p.Id
 	client := modbus.NewClient(h)
 	var err error
 	ka := float32(0)
 	kb := float32(0)
-	for i := 0; i < c.Retry; i += 1 {
-		res, er := client.ReadHoldingRegisters(c.Kab_Reg, 4)
+	for i := 0; i < p.Retry; i += 1 {
+		res, er := client.ReadHoldingRegisters(p.Kab_Reg, 4)
 		err = er
 		if err != nil {
-			log.Print("error reading KAB ", c.Name, ": ", err)
-			time.Sleep(time.Duration(c.Retry_Delay) * time.Millisecond)
+			log.Print("error reading KAB ", p.Name, ": ", err)
+			time.Sleep(time.Duration(p.Retry_Delay) * time.Millisecond)
 			continue
 		}
 		tmp01 := binary.LittleEndian.Uint32(res[0:1])
 		ka = math.Float32frombits(tmp01)
 		tmp01 = binary.LittleEndian.Uint32(res[2:3])
 		kb = math.Float32frombits(tmp01)
-		log.Print("Success reading KA, KB ", c.Name, " ka: ", res[0:1], " kb: ", res[1:2])
+		log.Print("Success reading KA, KB ", p.Name, " ka: ", res[0:1], " kb: ", res[1:2])
 		break
 	}
-	time.Sleep(time.Duration(c.Retry_Delay) * time.Millisecond)
+	time.Sleep(time.Duration(p.Retry_Delay) * time.Millisecond)
 	return ka, kb, err
 }
 
-func (m *MODBUS) WriteKB(c *config.Probe, ka float32, kb float32) error {
+func (m *MODBUS) WriteKB(p *config.Probe, ka float32, kb float32) error {
 	m.c.Mutex.Lock()
 	defer m.c.Mutex.Unlock()
 
 	h := m.handler
-	h.SlaveId = c.Id
+	h.SlaveId = p.Id
 	client := modbus.NewClient(h)
 	var01 := make([]byte, 4)
 	binary.LittleEndian.PutUint32(var01[0:1], math.Float32bits(ka))
 	binary.LittleEndian.PutUint32(var01[2:3], math.Float32bits(kb))
 	var err error
 	var res []byte
-	for i := 0; i < c.Retry; i += 1 {
-		r, er := client.WriteMultipleRegisters(c.Kab_Reg, 4, var01)
+	for i := 0; i < p.Retry; i += 1 {
+		r, er := client.WriteMultipleRegisters(p.Kab_Reg, 4, var01)
 		err = er
 		if err != nil {
-			log.Print("error writing ka, kb ", c.Name, ": ", err)
-			time.Sleep(time.Millisecond * time.Duration(c.Retry_Delay))
+			log.Print("error writing ka, kb ", p.Name, ": ", err)
+			time.Sleep(time.Millisecond * time.Duration(p.Retry_Delay))
 			continue
 		}
 		res = r
-		log.Print("sucsess writing ka, kb", c.Name, " ka: ", res[0:1], " kb: ", res[2:3])
+		log.Print("sucsess writing ka, kb", p.Name, " ka: ", res[0:1], " kb: ", res[2:3])
 		break
 	}
 	return err
@@ -183,7 +183,6 @@ func (m *MODBUS) Loop() {
 						e.Error = false
 						e.Value_raw = val
 						e.Temp = tempe
-						e.Value_calc = (val * e.Offset_a) + e.Offset_b
 					}
 					c.Mutex.Unlock()
 				} else {
